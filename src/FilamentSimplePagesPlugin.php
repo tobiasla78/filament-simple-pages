@@ -1,20 +1,28 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace Tobiasla78\FilamentSimplePages;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
+use Tobiasla78\FilamentSimplePages\Pages\SimplePage;
+use Tobiasla78\FilamentSimplePages\Resources\SimplePageResource;
 
-class SkeletonPlugin implements Plugin
+class FilamentSimplePagesPlugin implements Plugin
 {
     public function getId(): string
     {
-        return 'skeleton';
+        return 'filament-simple-pages';
     }
 
     public function register(Panel $panel): void
     {
-        //
+        $panel
+            ->resources([
+                SimplePageResource::class 
+            ])
+            ->pages([
+                SimplePage::class,
+            ]);
     }
 
     public function boot(Panel $panel): void
