@@ -62,6 +62,20 @@ use Tobiasla78\FilamentSimplePages\Pages\SimplePage;
     }
 ```
 
+## Columns Explanation
+
+![alt text](https://i.imgur.com/sJv5Fa8.png)
+
+```
+title       title and heading of the page
+slug        url of the page
+content     content of the page
+is_public   if you set it to false all users will get 403 server error
+indexable   removes <meta name="robots" content="noindex"> from the <head> of your page
+```
+
+
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
