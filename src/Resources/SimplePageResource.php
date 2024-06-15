@@ -3,8 +3,7 @@
 namespace Tobiasla78\FilamentSimplePages\Resources;
 
 use Tobiasla78\FilamentSimplePages\Resources\SimplePageResource\Pages;
-use Tobiasla78\FilamentSimplePages\Models\SimplePage;;
-use Filament\Forms\Components\DateTimePicker;
+use Tobiasla78\FilamentSimplePages\Models\SimplePage;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;

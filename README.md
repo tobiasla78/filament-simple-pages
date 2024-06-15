@@ -74,8 +74,6 @@ is_public   if you set it to false all users will get 403 server error
 indexable   removes <meta name="robots" content="noindex"> from the <head> of your page
 ```
 
-
-
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
