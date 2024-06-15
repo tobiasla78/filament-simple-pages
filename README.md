@@ -32,7 +32,7 @@ php artisan vendor:publish --tag="filament-simple-pages-views"
 
 ## Usage
 
-Register the plugin in your Filament PanelProvider.
+Register the plugin in your AdminPanelProvider.
 
 ```php
 use Tobiasla78\FilamentSimplePages\FilamentSimplePagesPlugin;
@@ -42,6 +42,22 @@ use Tobiasla78\FilamentSimplePages\FilamentSimplePagesPlugin;
         return $panel
             //...
             ->plugin(FilamentSimplePagesPlugin::make())
+            //...
+    }
+```
+
+If you want to make the pages only viewable for example in UserPanelProvider:
+
+```php
+use Tobiasla78\FilamentSimplePages\Pages\SimplePage;
+
+    public function panel(Panel $panel): Panel
+    {
+        return $panel
+            //...
+            ->pages([
+                SimplePage::class,
+            ])
             //...
     }
 ```
