@@ -41,6 +41,7 @@ class SimplePageResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('title'),
+                TextColumn::make('slug'),
                 ToggleColumn::make('is_public'),
                 ToggleColumn::make('indexable'),
             ])
