@@ -6,7 +6,6 @@ use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Tobiasla78\FilamentSimplePages\Pages\SimplePage;
 use Tobiasla78\FilamentSimplePages\Resources\SimplePageResource;
-use Illuminate\Support\Facades\Event;
 
 class FilamentSimplePagesPlugin implements Plugin
 {
