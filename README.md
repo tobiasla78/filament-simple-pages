@@ -41,7 +41,10 @@ use Tobiasla78\FilamentSimplePages\FilamentSimplePagesPlugin;
     {
         return $panel
             //...
-            ->plugin(FilamentSimplePagesPlugin::make())
+            ->plugin(
+                FilamentSimplePagesPlugin::make()
+                    ->prefixSlug('page') // (optional) sets the page url to yourPanelUrl/page/yourPageSlug
+            )
             //...
     }
 ```

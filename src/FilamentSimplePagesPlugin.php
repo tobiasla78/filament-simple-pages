@@ -6,9 +6,12 @@ use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Tobiasla78\FilamentSimplePages\Pages\SimplePage;
 use Tobiasla78\FilamentSimplePages\Resources\SimplePageResource;
+use Illuminate\Support\Facades\Event;
 
 class FilamentSimplePagesPlugin implements Plugin
 {
+    protected string $prefixSlug;
+
     public function getId(): string
     {
         return 'filament-simple-pages';
@@ -23,6 +26,18 @@ class FilamentSimplePagesPlugin implements Plugin
             ->pages([
                 SimplePage::class,
             ]);
+    }
+
+    public function getPrefixSlug() : string
+    {
+        return $this->prefixSlug ?? 'page';
+    }
+
+    public function prefixSlug(string $prefixSlug) : FilamentSimplePagesPlugin
+    {
+        $this->prefixSlug = $prefixSlug;
+
+        return $this;
     }
 
     public function boot(Panel $panel): void

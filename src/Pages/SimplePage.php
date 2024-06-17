@@ -7,14 +7,13 @@ use Filament\Support\Facades\FilamentView;
 use Filament\View\PanelsRenderHook;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Contracts\Support\Htmlable;
+use Tobiasla78\FilamentSimplePages\FilamentSimplePagesPlugin;
 
 class SimplePage extends Page
 {
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     protected static string $view = 'filament-simple-pages::filament.pages.simple-page';
-
-    protected static ?string $slug = 'simple-page/{slug}';
 
     protected static bool $shouldRegisterNavigation = false;
 
@@ -23,6 +22,11 @@ class SimplePage extends Page
     public function getHeading(): string
     {
         return $this->record->title ?? 'Simple Page';
+    }
+
+    public static function getSlug() : string
+    {
+        return FilamentSimplePagesPlugin::get()->getPrefixSlug() . '/{slug}';
     }
 
     public function getTitle(): string | Htmlable
