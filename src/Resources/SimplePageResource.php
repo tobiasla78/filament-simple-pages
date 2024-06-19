@@ -30,6 +30,14 @@ class SimplePageResource extends Resource
                     ->required(),
                 RichEditor::make('content')
                     ->columnSpanFull(),
+                     FileUpload::make('image_url')
+                    ->label('Upload a feature image')
+                    ->disk('public')
+                    ->image()
+                    ->imageEditor()
+                    ->columnStart(1)
+                    ->directory('static_pages')
+                    ->visibility('public'),
                 Toggle::make('is_public'),
                 Toggle::make('indexable'),
             ]);
