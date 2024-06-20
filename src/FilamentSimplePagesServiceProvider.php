@@ -62,6 +62,7 @@ class FilamentSimplePagesServiceProvider extends PackageServiceProvider
     {
         return [
             'create_filament-simple-pages_table',
+            'add_image_to_filament-simple-pages_table'
         ];
     }
 }
