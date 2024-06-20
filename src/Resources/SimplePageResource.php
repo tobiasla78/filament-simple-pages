@@ -77,7 +77,7 @@ class SimplePageResource extends Resource
                 RichEditor::make('content')
                     ->columnSpanFull(),
                 FileUpload::make('image_url')
-                    ->label('Bild für die Seite hochladen')
+                    ->label('Add image for this page')
                     ->disk('public')
                     ->image()
                     ->imageEditor()
