@@ -9,6 +9,15 @@
 
 Create pages from within your Filament panel. Intended for privacy policy, imprint, etc.
 
+## Features
+- Resource in your AdminPanelProvider to create pages
+- Customize the URL of your pages
+- Optional image field
+- View pages from another panel
+- Toggle search engine indexing for each page
+- Toggle the visibility of the page
+- Support for dark mode
+
 ## Installation
 
 You can install the package via composer:
