@@ -2,6 +2,8 @@
 
 namespace Tobiasla78\FilamentSimplePages\Resources;
 
+use Filament\Facades\Filament;
+use Filament\Forms\Components\FileUpload;
 use Tobiasla78\FilamentSimplePages\Resources\SimplePageResource\Pages;
 use Tobiasla78\FilamentSimplePages\Models\SimplePage;
 use Filament\Forms\Components\RichEditor;
@@ -14,13 +16,56 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Filament\Tables\Actions\Action;
-use Filament\Forms\Components\FileUpload;
 
 class SimplePageResource extends Resource
 {
     protected static ?string $model = SimplePage::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    public static function getIcon(): string
+    {
+        $plugin = Filament::getCurrentPanel()?->getPlugin('filament-simple-pages');
+
+        return $plugin->getIcon() ?? 'heroicon-o-rectangle-stack';
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        $plugin = Filament::getCurrentPanel()?->getPlugin('filament-simple-pages');
+
+        return $plugin->getNavigationLabel() ?? __('Simple Pages');
+    }
+
+    public static function getNavigationSort(): ?int
+    {
+        $plugin = Filament::getCurrentPanel()?->getPlugin('filament-simple-pages');
+
+        return $plugin->getSort();
+    }
+
+    public static function getNavigationIcon(): ?string
+    {
+        $plugin = Filament::getCurrentPanel()?->getPlugin('filament-simple-pages');
+
+        return $plugin->getIcon();
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        $plugin = Filament::getCurrentPanel()?->getPlugin('filament-simple-pages');
+
+        return $plugin->getNavigationGroup();
+    }
+
+    public static function getLabel(): string
+    {
+        return __('filament-simple-pages::simple-pages.label');
+    }
+
+    public static function getPluralLabel(): ?string
+    {
+        return __('filament-simple-pages::simple-pages.pluralLabel');
+    }
+
 
     public static function form(Form $form): Form
     {
@@ -31,8 +76,8 @@ class SimplePageResource extends Resource
                     ->required(),
                 RichEditor::make('content')
                     ->columnSpanFull(),
-                     FileUpload::make('image_url')
-                    ->label('Upload a feature image')
+                FileUpload::make('image_url')
+                    ->label('Bild für die Seite hochladen')
                     ->disk('public')
                     ->image()
                     ->imageEditor()
