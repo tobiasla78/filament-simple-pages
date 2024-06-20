@@ -90,6 +90,12 @@ is_public   if you set it to false all users will get 403 server error
 indexable   removes <meta name="robots" content="noindex"> from the <head> of your page
 ```
 
+## Support
+
+Feel free to open a [discussion](https://github.com/tobiasla78/filament-simple-pages/discussions).
+This plugin also has its own channel on the official Filament PHP Discord server.
+Feedback is also welcome.
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
