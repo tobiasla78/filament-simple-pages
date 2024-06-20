@@ -16,6 +16,7 @@ class SimplePage extends Model
         'title',
         'content',
         'is_public',
-        'indexable'
+        'indexable',
+        'image_url',
     ];
 }

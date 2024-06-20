@@ -35,6 +35,10 @@ class FilamentSimplePagesServiceProvider extends PackageServiceProvider
         if (file_exists($package->basePath('/../database/migrations'))) {
             $package->hasMigrations($this->getMigrations());
         }
+
+        if (file_exists($package->basePath('/../resources/lang'))) {
+            $package->hasTranslations();
+        }
     }
 
     public function packageRegistered(): void
@@ -58,6 +62,7 @@ class FilamentSimplePagesServiceProvider extends PackageServiceProvider
     {
         return [
             'create_filament-simple-pages_table',
+            'add_image_to_filament-simple-pages_table'
         ];
     }
 }

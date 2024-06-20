@@ -43,6 +43,10 @@ use Tobiasla78\FilamentSimplePages\FilamentSimplePagesPlugin;
             //...
             ->plugin(
                 FilamentSimplePagesPlugin::make()
+                    ->setIcon('heroicon-o-rectangle-stack') // (optional) set the navigation icon
+                    ->setSort(20) // (optional int) sorting
+                    ->setNavigationGroup('groupName') // (optional) set a navigation group name
+                    ->setNavigationLabel('Simple Pages') // (optional) set the navigation label 
                     ->prefixSlug('page') // (optional) sets the page url to yourPanelUrl/page/yourPageSlug
             )
             //...
