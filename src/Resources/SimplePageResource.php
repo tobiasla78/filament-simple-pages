@@ -14,6 +14,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Filament\Tables\Actions\Action;
+use Filament\Forms\Components\FileUpload;
 
 class SimplePageResource extends Resource
 {
