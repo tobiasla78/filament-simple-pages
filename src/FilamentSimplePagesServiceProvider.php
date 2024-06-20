@@ -35,6 +35,10 @@ class FilamentSimplePagesServiceProvider extends PackageServiceProvider
         if (file_exists($package->basePath('/../database/migrations'))) {
             $package->hasMigrations($this->getMigrations());
         }
+
+        if (file_exists($package->basePath('/../resources/lang'))) {
+            $package->hasTranslations();
+        }
     }
 
     public function packageRegistered(): void
