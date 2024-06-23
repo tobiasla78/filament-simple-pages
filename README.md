@@ -1,4 +1,4 @@
-![alt text](https://i.imgur.com/QYShzED.jpeg)
+![alt text](https://i.imgur.com/gYZilCK.jpeg)
 
 # filament-simple-pages
 
@@ -26,17 +26,10 @@ You can install the package via composer:
 composer require tobiasla78/filament-simple-pages
 ```
 
-You need to publish and run the migrations with:
+Install the plugin with:
 
 ```bash
-php artisan vendor:publish --tag="filament-simple-pages-migrations"
-php artisan migrate
-```
-
-Optionally, you can publish the views using:
-
-```bash
-php artisan vendor:publish --tag="filament-simple-pages-views"
+php artisan filament-simple-pages:install
 ```
 
 ## Usage
@@ -49,20 +42,14 @@ use Tobiasla78\FilamentSimplePages\FilamentSimplePagesPlugin;
     public function panel(Panel $panel): Panel
     {
         return $panel
-            //...
             ->plugin(
                 FilamentSimplePagesPlugin::make()
-                    ->setIcon('heroicon-o-rectangle-stack') // (optional) set the navigation icon
-                    ->setSort(20) // (optional int) sorting
-                    ->setNavigationGroup('groupName') // (optional) set a navigation group name
-                    ->setNavigationLabel('Simple Pages') // (optional) set the navigation label 
                     ->prefixSlug('page') // (optional) sets the page url to yourPanelUrl/page/yourPageSlug
             )
-            //...
     }
 ```
 
-If you want to make the pages only viewable for example in UserPanelProvider:
+You can make the pages viewable in another Panel (directly via url):
 
 ```php
 use Tobiasla78\FilamentSimplePages\Pages\SimplePage;
@@ -70,24 +57,26 @@ use Tobiasla78\FilamentSimplePages\Pages\SimplePage;
     public function panel(Panel $panel): Panel
     {
         return $panel
-            //...
             ->pages([
                 SimplePage::class,
             ])
-            //...
     }
 ```
 
-## Columns Explanation
+## Customisation
 
-![alt text](https://i.imgur.com/sJv5Fa8.png)
+Optionally, you can publish the Filament resource:
 
+```bash
+php artisan vendor:publish --tag="filament-simple-pages-resources"
 ```
-title       title and heading of the page
-slug        url of the page
-content     content of the page
-is_public   if you set it to false all users will get 403 server error
-indexable   removes <meta name="robots" content="noindex"> from the <head> of your page
+
+> Files will be published to App/Filament/Resources you may need to move them and adjust Namespaces if you are using multiple panels.
+
+Optionally, you can publish the views using:
+
+```bash
+php artisan vendor:publish --tag="filament-simple-pages-views"
 ```
 
 ## Support

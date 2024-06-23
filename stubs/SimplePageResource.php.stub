@@ -1,9 +1,9 @@
 <?php
 
-namespace Tobiasla78\FilamentSimplePages\Resources;
+namespace App\Filament\Resources;
 
 use Filament\Forms\Components\FileUpload;
-use \Tobiasla78\FilamentSimplePages\Resources\SimplePageResource\Pages;
+use App\Filament\Resources\SimplePageResource\Pages;
 use \Tobiasla78\FilamentSimplePages\Models\SimplePage;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;

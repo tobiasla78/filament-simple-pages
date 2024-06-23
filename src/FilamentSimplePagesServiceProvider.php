@@ -2,19 +2,9 @@
 
 namespace Tobiasla78\FilamentSimplePages;
 
-use Filament\Support\Assets\AlpineComponent;
-use Filament\Support\Assets\Asset;
-use Filament\Support\Assets\Css;
-use Filament\Support\Assets\Js;
-use Filament\Support\Facades\FilamentAsset;
-use Filament\Support\Facades\FilamentIcon;
-use Illuminate\Filesystem\Filesystem;
-use Livewire\Features\SupportTesting\Testable;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Tobiasla78\FilamentSimplePages\Commands\FilamentSimplePagesCommand;
-use Tobiasla78\FilamentSimplePages\Testing\TestsFilamentSimplePages;
 
 class FilamentSimplePagesServiceProvider extends PackageServiceProvider
 {
@@ -30,7 +20,12 @@ class FilamentSimplePagesServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package->name(static::$name)
-            ->hasViews();
+            ->hasViews()
+            ->hasInstallCommand(function(InstallCommand $command) {
+                $command
+                    ->publishMigrations()
+                    ->askToRunMigrations();
+            });
 
         if (file_exists($package->basePath('/../database/migrations'))) {
             $package->hasMigrations($this->getMigrations());
@@ -39,6 +34,13 @@ class FilamentSimplePagesServiceProvider extends PackageServiceProvider
         if (file_exists($package->basePath('/../resources/lang'))) {
             $package->hasTranslations();
         }
+
+        $this->publishes([
+            __DIR__.'/../stubs/SimplePageResource.php.stub' => app_path() . '/Filament/Resources/SimplePageResource.php',
+            __DIR__.'/../stubs/SimplePageResource/Pages/CreateSimplePage.php.stub' => app_path() . '/Filament/Resources/SimplePageResource/CreateSimplePage.php',
+            __DIR__.'/../stubs/SimplePageResource/Pages/EditSimplePage.php.stub' => app_path() . '/Filament/Resources/SimplePageResource/EditSimplePage.php',
+            __DIR__.'/../stubs/SimplePageResource/Pages/ListSimplePages.php.stub' => app_path() . '/Filament/Resources/SimplePageResource/ListSimplePages.php',
+        ], 'filament-simple-pages-resources');
     }
 
     public function packageRegistered(): void

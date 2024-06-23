@@ -11,8 +11,6 @@ use Tobiasla78\FilamentSimplePages\FilamentSimplePagesPlugin;
 
 class SimplePage extends Page
 {
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
-
     protected static string $view = 'filament-simple-pages::filament.pages.simple-page';
 
     protected static bool $shouldRegisterNavigation = false;
