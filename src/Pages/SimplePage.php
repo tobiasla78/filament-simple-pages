@@ -39,6 +39,11 @@ class SimplePage extends Page
         }
     }
 
+    public static function shouldRegisterSpotlight(): bool
+    {
+        return false;
+    }
+
     public function mount($slug)
     {
         $this->record = \Tobiasla78\FilamentSimplePages\Models\SimplePage::where('slug', $slug)->first();
