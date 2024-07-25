@@ -14,6 +14,7 @@ Create pages from within your Filament panel. Intended for privacy policy, impri
 - Customize the URL of your pages
 - Optional image field
 - View pages from another panel
+- View pages from without panels
 - Toggle search engine indexing for each page
 - Toggle the visibility of the page
 - Support for dark mode
@@ -49,7 +50,7 @@ use Tobiasla78\FilamentSimplePages\FilamentSimplePagesPlugin;
     }
 ```
 
-You can make the pages viewable in another Panel (directly via url):
+You can make the pages viewable in another panel:
 
 ```php
 use Tobiasla78\FilamentSimplePages\Pages\SimplePage;
@@ -63,6 +64,32 @@ use Tobiasla78\FilamentSimplePages\Pages\SimplePage;
     }
 ```
 
+You may modify your layout blade file if you want to be able to toggle search engine indexing AND if your page should be displayed outside Filament panels.
+
+> [!NOTE]
+> **$filamentSimplePages_indexable** becomes automatically available.
+
+```php
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        @if (isset($filamentSimplePages_indexable) && $filamentSimplePages_indexable)
+            <meta name="robots" content="index, follow">
+        @else
+            <meta name="robots" content="noindex, nofollow">
+        @endif
+
+        <title>{{ $title ?? 'Page Title' }}</title>
+    </head>
+    <body>
+        {{ $slot }}
+    </body>
+</html>
+```
+
 ## Customisation
 
 Optionally, you can publish the Filament resource:
@@ -71,6 +98,7 @@ Optionally, you can publish the Filament resource:
 php artisan vendor:publish --tag="filament-simple-pages-resources"
 ```
 
+> [!NOTE]
 > Files will be published to App/Filament/Resources you may need to move them and adjust Namespaces if you are using multiple panels.
 
 Optionally, you can publish the views using:

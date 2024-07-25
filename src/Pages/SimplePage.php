@@ -8,9 +8,12 @@ use Filament\View\PanelsRenderHook;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Contracts\Support\Htmlable;
 use Tobiasla78\FilamentSimplePages\FilamentSimplePagesPlugin;
+use Tobiasla78\FilamentSimplePages\Traits\SimplePageTrait;
 
 class SimplePage extends Page
 {
+    use SimplePageTrait;
+
     protected static string $view = 'filament-simple-pages::filament.pages.simple-page';
 
     protected static bool $shouldRegisterNavigation = false;
@@ -32,13 +35,6 @@ class SimplePage extends Page
         return $this->record->title ?? 'Simple Page';
     }
 
-    protected function abortIfNotPublic()
-    {
-        if (!$this->record->is_public) {
-            abort(403);
-        }
-    }
-
     public static function shouldRegisterSpotlight(): bool
     {
         return false;
@@ -48,13 +44,8 @@ class SimplePage extends Page
     {
         $this->record = \Tobiasla78\FilamentSimplePages\Models\SimplePage::where('slug', $slug)->first();
 
-        $this->abortIfNotPublic();
+        $this->abortIfNotPublic($this->record);
 
-        if ($this->record->indexable === 0) {
-            FilamentView::registerRenderHook(
-                PanelsRenderHook::HEAD_START,
-                fn (): string => Blade::render('<meta name="robots" content="noindex">'),
-            );
-        }
+        $this->indexable($this->record);
     }
 }

@@ -5,6 +5,8 @@ namespace Tobiasla78\FilamentSimplePages;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Illuminate\Routing\Router;
+use Tobiasla78\FilamentSimplePages\Http\Middleware\IndexMiddleware;
 
 class FilamentSimplePagesServiceProvider extends PackageServiceProvider
 {
@@ -49,7 +51,7 @@ class FilamentSimplePagesServiceProvider extends PackageServiceProvider
 
     public function packageBooted(): void
     {
-
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
     }
 
     protected function getAssetPackageName(): ?string
@@ -63,8 +65,7 @@ class FilamentSimplePagesServiceProvider extends PackageServiceProvider
     protected function getMigrations(): array
     {
         return [
-            'create_filament-simple-pages_table',
-            'add_image_to_filament-simple-pages_table'
+            'create_filament_simple_pages_table',
         ];
     }
 }
