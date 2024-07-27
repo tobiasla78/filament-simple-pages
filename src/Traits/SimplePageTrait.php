@@ -15,6 +15,13 @@ trait SimplePageTrait {
         }
     }
 
+    public function abortIfNotOutsideAccessable($record)
+    {
+        if (!$record->register_outside_filament) {
+            abort(404);
+        }
+    }
+
     public function indexable($record)
     {
         if ($record->indexable === 0) {

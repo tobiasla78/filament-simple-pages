@@ -64,10 +64,14 @@ use Tobiasla78\FilamentSimplePages\Pages\SimplePage;
     }
 ```
 
-You may modify your layout blade file if you want to be able to toggle search engine indexing AND if your page should be displayed outside Filament panels.
+You can make pages available outside Filament panels:
 
-> [!NOTE]
-> **$filamentSimplePages_indexable** becomes automatically available.
+There is a ToggleColumn when creating/editing the page.
+
+> [!CAUTION]
+> Toggle indexing for search engine is not automatically available when registrate page outside Filament panels!
+
+Here is an example on how to implement search engine indexing for pages outside Filament panels in your components.layouts.app file:
 
 ```php
 <!DOCTYPE html>

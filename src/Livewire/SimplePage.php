@@ -5,7 +5,6 @@ namespace Tobiasla78\FilamentSimplePages\Livewire;
 use Livewire\Component;
 use Tobiasla78\FilamentSimplePages\Models\SimplePage as ModelsSimplePage;
 use Tobiasla78\FilamentSimplePages\Traits\SimplePageTrait;
-use Illuminate\Support\Facades\View;
 
 class SimplePage extends Component
 {
@@ -16,9 +15,11 @@ class SimplePage extends Component
     public function mount($slug)
     {
         $this->record = ModelsSimplePage::where('slug', $slug)->first();
-        
+       
         $this->abortIfNotPublic($this->record);
 
+        $this->abortIfNotOutsideAccessable($this->record);
+        
         view()->share('filamentSimplePages_indexable', $this->record->indexable ?? false);
     }
 
