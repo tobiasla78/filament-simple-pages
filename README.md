@@ -73,7 +73,7 @@ There is a ToggleColumn when creating/editing the page.
 
 Here is an example on how to implement search engine indexing for pages outside Filament panels in your components.layouts.app file:
 
-```php
+```html
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
