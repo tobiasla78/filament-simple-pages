@@ -62,10 +62,10 @@ use Tobiasla78\FilamentSimplePages\Pages\SimplePage;
             ])
     }
 ```
+## Register pages outside Filament panels
 
-You can make pages available outside Filament panels:
-
-There is a ToggleColumn when creating/editing the page.
+You can make the pages accessable outside of Filament panels by toggling "Register Outside Filament" in the Resource.
+By default it will look for `components.layouts.app` as the layout file and the content will be rendered to `{{ $slot }}` like the example below.
 
 > [!CAUTION]
 > Toggle indexing for search engine is not automatically available when registrate page outside Filament panels!
