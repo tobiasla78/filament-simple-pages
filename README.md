@@ -71,7 +71,7 @@ There is a ToggleColumn when creating/editing the page.
 > [!CAUTION]
 > Toggle indexing for search engine is not automatically available when registrate page outside Filament panels!
 
-Here is an example on how to implement search engine indexing for pages outside Filament panels in your components.layouts.app file:
+Here is an example on how to implement search engine indexing for pages outside Filament panels in your `components.layouts.app` file:
 
 ```html
 <!DOCTYPE html>
@@ -103,7 +103,7 @@ php artisan vendor:publish --tag="filament-simple-pages-resources"
 ```
 
 > [!NOTE]
-> Files will be published to App/Filament/Resources you may need to move them and adjust Namespaces if you are using multiple panels.
+> Files will be published to `App/Filament/Resources` you may need to move them and adjust Namespaces if you are using multiple panels.
 
 Optionally, you can publish the views using:
 
@@ -112,12 +112,12 @@ php artisan vendor:publish --tag="filament-simple-pages-views"
 ```
 
 ## Upgrading from 0.x.x to 1.x.x
-- backup your filament_simple_pages table in your database if you don't want to lose data
-- delete the filament_simple_pages table in your database
-- delete create_filament-simple-pages_table.php in database/migrations
-- delete add_image_to_filament-simple-pages_table.php in database/migrations
-- upgrade the package version in composer.json to "tobiasla78/filament-simple-pages": "^1.0"
-- run composer update
+- backup your `filament_simple_pages` table in your database if you don't want to lose data
+- delete the `filament_simple_pages` table in your database
+- delete `create_filament-simple-pages_table.php` in `database/migrations`
+- delete `add_image_to_filament-simple-pages_table.php` in `database/migrations`
+- upgrade the package version in composer.json to `"tobiasla78/filament-simple-pages": "^1.0"`
+- delete published files from vendor if you had any
 - follow the Installation & Usage intructions in this README
 
 ## Support
