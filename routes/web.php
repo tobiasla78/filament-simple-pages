@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use Tobiasla78\FilamentSimplePages\FilamentSimplePagesPlugin;
 use Tobiasla78\FilamentSimplePages\Livewire\SimplePage as LivewireSimplePage;
-use Tobiasla78\FilamentSimplePages\Models\SimplePage;
 
 try {
 
