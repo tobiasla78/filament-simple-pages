@@ -116,6 +116,7 @@ php artisan vendor:publish --tag="filament-simple-pages-views"
 - delete `create_filament-simple-pages_table.php` in `database/migrations`
 - delete `add_image_to_filament-simple-pages_table.php` in `database/migrations`
 - upgrade the package version in composer.json to `"tobiasla78/filament-simple-pages": "^1.0"`
+- run `composer update tobiasla78/filament-simple-pages`
 - delete published files from vendor if you had any
 - follow the Installation & Usage intructions in this README
 
