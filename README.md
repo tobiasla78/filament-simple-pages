@@ -67,6 +67,13 @@ use Tobiasla78\FilamentSimplePages\Pages\SimplePage;
 You can make the pages accessable outside of Filament panels by toggling "Register Outside Filament" in the Resource.
 By default it will look for `components.layouts.app` as the layout file and the content will be rendered to `{{ $slot }}` like the example below.
 
+### CSS Styles
+
+By default you will need to have Tailwind CSS and Tailwind Typography plugin installed to make the styles work or you could publish the views and use your own styles.
+You may also want to add `"./vendor/tobiasla78/filament-simple-pages/resources/views/livewire/simple-page.blade.php"` to your `tailwind.config.js`.
+
+### Search Engine Indexing
+
 > [!CAUTION]
 > Toggle indexing for search engine is not automatically available when registrate page outside Filament panels!
 
