@@ -14,7 +14,7 @@ class SimplePage extends Component
 
     public function mount($slug)
     {
-        $this->record = ModelsSimplePage::where('slug', $slug)->first();
+        $this->record = ModelsSimplePage::where('slug', $slug)->firstOrFail();
        
         $this->abortIfNotPublic($this->record);
 
