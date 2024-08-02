@@ -34,7 +34,7 @@ php artisan filament-simple-pages:install
 
 ## Basic Usage
 
-### Add the Resource to create pages in your panel
+### Add the resource to create pages in your panel
 
 Register the plugin in your AdminPanelProvider.
 
