@@ -1,4 +1,4 @@
-## Customize
+## Customisation
 
 Optionally, you can publish the Filament resource:
 

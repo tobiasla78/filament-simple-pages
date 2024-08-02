@@ -18,9 +18,61 @@ Create pages from within your Filament panel. Intended for privacy policy, impri
 - Toggle the visibility of the page
 - Support for dark mode
 
-## Getting Started
+## Installation
 
-Please read the [docs](https://app.gitbook.com/o/kllf4JnkuFlspzhZ17i4/s/Imj7ygiZoHV9iAYqcWMW/) to get started.
+You can install the package via composer:
+
+```bash
+composer require tobiasla78/filament-simple-pages
+```
+
+Install the plugin with and run the migrations:
+
+```bash
+php artisan filament-simple-pages:install
+```
+
+## Basic Usage
+
+### Add the Resource to create pages to your panel
+
+Register the plugin in your AdminPanelProvider.
+
+```php
+use Tobiasla78\FilamentSimplePages\FilamentSimplePagesPlugin;
+
+    public function panel(Panel $panel): Panel
+    {
+        return $panel
+            ->plugins([
+                FilamentSimplePagesPlugin::make()
+                    ->prefixSlug('page')
+            ])
+    }
+```
+
+For example: `->prefixSlug('page')` will set the page URL to `http://localhost/admin/page/privacy-policy`.
+
+### View pages from another panel
+
+You can make the pages viewable in another Filament panel:
+
+```php
+use Tobiasla78\FilamentSimplePages\Pages\SimplePage;
+
+    public function panel(Panel $panel): Panel
+    {
+        return $panel
+            ->pages([
+                SimplePage::class,
+            ])
+    }
+```
+
+## Advanced Usage
+- [Customisation](docs/customise.md)
+- [Register Pages Outside Filament](docs/pages-outside-filament.md)
+- [Upgrade Guide](docs/upgrading.md)
 
 ## Support
 
