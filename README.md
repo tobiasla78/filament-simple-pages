@@ -26,7 +26,7 @@ You can install the package via composer:
 composer require tobiasla78/filament-simple-pages
 ```
 
-Install the plugin with and run the migrations:
+Install the plugin and run the migrations:
 
 ```bash
 php artisan filament-simple-pages:install
@@ -70,15 +70,13 @@ use Tobiasla78\FilamentSimplePages\Pages\SimplePage;
 ```
 
 ## Advanced Usage
-- [Customisation](docs/customisation.md)
-- [Register Pages Outside Filament](docs/pages-outside-filament.md)
-- [Upgrade Guide](docs/upgrading.md)
+- [Customisation](docs/customisation.md) - publish resources or views from vendor
+- [Register Pages Outside Filament](docs/pages-outside-filament.md) - make pages viewable outside of Filament
+- [Upgrade Guide](docs/upgrading.md) - upgrade version from 0.x.x to 1.x.x
 
 ## Support
 
-Feel free to open a [discussion](https://github.com/tobiasla78/filament-simple-pages/discussions).
-This plugin also has its own channel on the official Filament PHP Discord server.
-Feedback is also welcome.
+[discussion](https://github.com/tobiasla78/filament-simple-pages/discussions) or [Filament PHP Discord](https://discord.com/channels/883083792112300104/1252364577228853389)
 
 ## License
 
