@@ -8,6 +8,7 @@ This is a new major version the database schema is changed and it will require a
 
 - option to register page outside an Filament panel
 - added upgrade guide from 0.x.x to 1.x.x in the README
+- improved docs
 
 ## 0.4.0
 - option to publish Filament resource
