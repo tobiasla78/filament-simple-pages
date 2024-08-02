@@ -70,7 +70,7 @@ use Tobiasla78\FilamentSimplePages\Pages\SimplePage;
 ```
 
 ## Advanced Usage
-- [Customisation](docs/customise.md)
+- [Customisation](docs/customisation.md)
 - [Register Pages Outside Filament](docs/pages-outside-filament.md)
 - [Upgrade Guide](docs/upgrading.md)
 
