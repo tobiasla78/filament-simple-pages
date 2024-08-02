@@ -44,6 +44,7 @@ use Tobiasla78\FilamentSimplePages\FilamentSimplePagesPlugin;
     public function panel(Panel $panel): Panel
     {
         return $panel
+            ->path('admin')
             ->plugins([
                 FilamentSimplePagesPlugin::make()
                     ->prefixSlug('page')
@@ -63,11 +64,14 @@ use Tobiasla78\FilamentSimplePages\Pages\SimplePage;
     public function panel(Panel $panel): Panel
     {
         return $panel
+            ->path('user')
             ->pages([
                 SimplePage::class,
             ])
     }
 ```
+
+The URL would be `http://localhost/user/page/privacy-policy`.
 
 ## Advanced Usage
 - [Customisation](docs/customisation.md) - publish resources or views from vendor
