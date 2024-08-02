@@ -1,6 +1,6 @@
 ## Pages outside Filament
 
-You can make the pages viewable outside of Filament panels by toggling "Register Outside Filament" in the Resource. By default the page will look for `components.layouts.app` as the layout file. The content will be rendered to `{{ $slot }}` like the HTML example below.
+You can make the pages viewable outside of Filament panels by toggling "Register Outside Filament" in the Resource.
 
 ### Layout files
 
