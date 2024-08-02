@@ -1,10 +1,10 @@
 ## Pages outside Filament
 
-You can make the pages viewable outside of Filament panels by toggling "Register Outside Filament" in the Resource.
+You can make the pages viewable outside of Filament panels by toggling "Register Outside Filament" in the resource.
 
 ### Layout files
 
-If left blank in the Resource the default layout file will be `components.layouts.app` and the content will be rendered to `{{ $slot }}`.
+If left blank in the resource the default layout file will be `components.layouts.app` and the content will be rendered to `{{ $slot }}`.
 You can also use `extends` and `section` when creating/editing a page.
 
 ### Make CSS work
