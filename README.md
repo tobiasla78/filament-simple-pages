@@ -36,7 +36,7 @@ php artisan filament-simple-pages:install
 
 ### Add the resource to create pages in your panel
 
-Register the plugin in your AdminPanelProvider.
+Register the plugin in your AdminPanelProvider:
 
 ```php
 use Tobiasla78\FilamentSimplePages\FilamentSimplePagesPlugin;
@@ -74,9 +74,9 @@ use Tobiasla78\FilamentSimplePages\Pages\SimplePage;
 The URL would be `http://localhost/user/page/privacy-policy`.
 
 ## Advanced Usage
-- [Customisation](docs/customisation.md) - publish resources or views from vendor
-- [Register Pages Outside Filament](docs/pages-outside-filament.md) - make pages viewable outside of Filament
-- [Upgrade Guide](docs/upgrading.md) - upgrade version from 0.x.x to 1.x.x
+- [Customisation](docs/customisation.md) - Customize resource or publish views
+- [Register Pages Outside Filament](docs/pages-outside-filament.md) - Make pages viewable outside of Filament
+- [Upgrade Guide](docs/upgrading.md) - Upgrade version from 0.x.x to 1.x.x
 
 ## Support
 
