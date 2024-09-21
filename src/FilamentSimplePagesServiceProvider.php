@@ -36,13 +36,6 @@ class FilamentSimplePagesServiceProvider extends PackageServiceProvider
         if (file_exists($package->basePath('/../resources/lang'))) {
             $package->hasTranslations();
         }
-
-        $this->publishes([
-            __DIR__.'/../stubs/SimplePageResource.php.stub' => app_path() . '/Filament/Resources/SimplePageResource.php',
-            __DIR__.'/../stubs/SimplePageResource/Pages/CreateSimplePage.php.stub' => app_path() . '/Filament/Resources/SimplePageResource/CreateSimplePage.php',
-            __DIR__.'/../stubs/SimplePageResource/Pages/EditSimplePage.php.stub' => app_path() . '/Filament/Resources/SimplePageResource/EditSimplePage.php',
-            __DIR__.'/../stubs/SimplePageResource/Pages/ListSimplePages.php.stub' => app_path() . '/Filament/Resources/SimplePageResource/ListSimplePages.php',
-        ], 'filament-simple-pages-resources');
     }
 
     public function packageRegistered(): void
