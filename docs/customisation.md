@@ -1,15 +1,35 @@
 ## Customisation
 
-Keep in mind that this will break future updates.
+### Customize the resource
 
-### Publishing the resource
+You can customize the resource by creating a new resource and extending the base resource.
 
-Optionally, you can publish the Filament resource:
+```php
+namespace App\Filament\Resources;
 
-```bash
-php artisan vendor:publish --tag="filament-simple-pages-resources"
+use Tobiasla78\FilamentSimplePages\Resources\SimplePageResource as BaseSimplePageResource;
+
+class SimplePageResource extends BaseSimplePageResource
+{
+    protected static ?string $navigationLabel = 'Custom Navigation Label';
+}
 ```
-Files will be published to `App/Filament/Resources` you may need to move them and adjust Namespaces if you are using multiple panels.
+
+Then specify which resource you are using in the AdminPanelProvider:
+
+```php
+use Tobiasla78\FilamentSimplePages\FilamentSimplePagesPlugin;
+
+    public function panel(Panel $panel): Panel
+    {
+        return $panel
+            ->path('admin')
+            ->plugins([
+                FilamentSimplePagesPlugin::make()
+                    ->resource('App\\Filament\\Resources\\SimplePageResource')
+            ])
+    }
+```
 
 ### Publishing the views
 

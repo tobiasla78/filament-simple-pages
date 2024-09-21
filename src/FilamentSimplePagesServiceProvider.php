@@ -29,6 +29,10 @@ class FilamentSimplePagesServiceProvider extends PackageServiceProvider
                     ->askToRunMigrations();
             });
 
+        if (file_exists($package->basePath("/../config/simple-pages.php"))) {
+            $package->hasConfigFile();
+        }
+
         if (file_exists($package->basePath('/../database/migrations'))) {
             $package->hasMigrations($this->getMigrations());
         }
