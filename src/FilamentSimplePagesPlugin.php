@@ -6,13 +6,11 @@ use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Tobiasla78\FilamentSimplePages\Pages\SimplePage;
 use Tobiasla78\FilamentSimplePages\Resources\SimplePageResource;
-use Tobiasla78\FilamentSimplePages\Resources\SimplePageResource as DefaultSimplePageResource;
 
 class FilamentSimplePagesPlugin implements Plugin
 {
-    protected string $defaultResource = DefaultSimplePageResource::class;
     protected string $prefixSlug;
-    protected string $resource;
+    protected bool $shouldRegisterResource;
 
     public function getId(): string
     {
@@ -21,23 +19,21 @@ class FilamentSimplePagesPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        $resourceClass = $this->getResource();
-
-        if ($resourceClass === $this->defaultResource) {
-            $panel->resources([$resourceClass]);
+        if ($this->shouldRegisterResource) {
+            $panel->resources([SimplePageResource::class]);
         }
 
         $panel->pages([SimplePage::class]);
     }
     
-    public function getResource() : string
+    public function getShouldRegisterResource() : bool
     {
-        return $this->resource ?? $this->defaultResource;
+        return $this->shouldRegisterResource ?? true;
     }
 
-    public function resource(string $resource) : FilamentSimplePagesPlugin
+    public function shouldRegisterResource(bool $condition = true) : FilamentSimplePagesPlugin
     {
-        $this->resource = $resource;
+        $this->shouldRegisterResource = $condition;
 
         return $this;
     }

@@ -11,25 +11,22 @@ use Tobiasla78\FilamentSimplePages\Resources\SimplePageResource as BaseSimplePag
 
 class SimplePageResource extends BaseSimplePageResource
 {
-    protected static ?string $navigationLabel = 'Custom Navigation Label';
+    protected static ?string $navigationLabel = 'Pages';
+
+    protected static ?string $navigationIcon = 'heroicon-m-folder-open';
 }
 ```
 
-Then specify which resource you are using in the AdminPanelProvider:
+Then prevent the original resource from being loaded in your AdminPanelProvider:
 
 ```php
-use Tobiasla78\FilamentSimplePages\FilamentSimplePagesPlugin;
-
-    public function panel(Panel $panel): Panel
-    {
-        return $panel
-            ->path('admin')
-            ->plugins([
-                FilamentSimplePagesPlugin::make()
-                    ->resource('App\\Filament\\Resources\\SimplePageResource')
-            ])
-    }
+->plugins([
+    FilamentSimplePagesPlugin::make()
+        ->shouldRegisterResource(false)
+])
 ```
+
+You may need to register your custom resource in your AdminPanelProvider if it's not automatically discovered.
 
 ### Publishing the views
 
