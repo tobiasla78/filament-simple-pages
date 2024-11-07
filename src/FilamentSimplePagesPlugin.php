@@ -4,8 +4,6 @@ namespace Tobiasla78\FilamentSimplePages;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
-use Tobiasla78\FilamentSimplePages\Pages\SimplePage;
-use Tobiasla78\FilamentSimplePages\Resources\SimplePageResource;
 
 class FilamentSimplePagesPlugin implements Plugin
 {
@@ -19,8 +17,8 @@ class FilamentSimplePagesPlugin implements Plugin
     public function register(Panel $panel): void
     {
         $panel
-            ->resources([SimplePageResource::class])
-            ->pages([SimplePage::class]);
+            ->resources(config('filamentpages.resources')
+            ->pages(config('filamentpages.resources');
     }
     
     public function getPrefixSlug() : string
