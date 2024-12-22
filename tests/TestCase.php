@@ -44,6 +44,7 @@ class TestCase extends Orchestra
             SupportServiceProvider::class,
             TablesServiceProvider::class,
             WidgetsServiceProvider::class,
+            AdminPanelProvider::class,
             FilamentSimplePagesServiceProvider::class,
         ];
     }
