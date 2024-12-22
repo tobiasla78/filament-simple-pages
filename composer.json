@@ -58,7 +58,7 @@
         "laravel": {
             "providers": [
                 "Tobiasla78\\FilamentSimplePages\\FilamentSimplePagesServiceProvider",
-                "Tobiasla78\\FilamentSimplePages\\AdminPanelProvider"
+                "Tobiasla78\\FilamentSimplePages\\Tests\\AdminPanelProvider"
             ],
             "aliases": {
                 "FilamentSimplePages": "Tobiasla78\\FilamentSimplePages\\Facades\\FilamentSimplePages"
