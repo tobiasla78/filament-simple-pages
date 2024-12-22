@@ -16,6 +16,8 @@ use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Filament\Tables\Actions\Action;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Get;
 
 class SimplePageResource extends Resource
 {
@@ -51,16 +53,43 @@ class SimplePageResource extends Resource
                     ])
                     ->columnSpan(8)
                     ->columns(2),
-                Section::make()
-                    ->description('Additional Configuration')
+                Grid::make(1)
                     ->schema([
-                        Toggle::make('is_public')
-                            ->helperText('Should the page be public?'),
-                        Toggle::make('indexable')
-                            ->helperText('Should the page be indexed by search engines?'),
-                    ])
-                    ->columnSpan(4)
-                    ->columns(2)
+                        Section::make()
+                            ->description('Additional Configuration')
+                            ->schema([
+                                Toggle::make('is_public')
+                                    ->helperText('Should the page be public?'),
+                                Toggle::make('indexable')
+                                    ->helperText('Search engine indexing'),
+                            ])
+                            ->columnSpan(4)
+                            ->columns(2),
+                        Section::make()
+                            ->description('Registration Outside Panels')
+                            ->schema([
+                                Toggle::make('register_outside_filament')
+                                    ->label('Page Registration Outside Filament')
+                                    ->live()
+                                    ->helperText('Registers the page outside Filament so it can be accessed from without panel'),
+                                TextInput::make('layout')
+                                ->hint('Leave it empty for no layout')
+                                    ->placeholder('components.layouts.app')
+                                    ->helperText('content will be rendered to {{ $slot }}')
+                                    ->visible(fn (Get $get) => $get('register_outside_filament')),
+                                TextInput::make('extends')
+                                    ->hint('Leave it empty if you only use layout')
+                                    ->placeholder('layouts.app')
+                                    ->helperText('same as @extends(\'layouts.app\')')
+                                    ->visible(fn (Get $get) => $get('register_outside_filament')),
+                                TextInput::make('section')
+                                    ->hint('Leave it empty if you only use layout')
+                                    ->placeholder('content')
+                                    ->helperText('renders the content to @section(\'content\')')
+                                    ->visible(fn (Get $get) => $get('register_outside_filament')),
+                            ])
+                            ->columnSpan(4)
+                    ])->columnSpan(4),
             ])
             ->columns(12);
     }
@@ -71,8 +100,11 @@ class SimplePageResource extends Resource
             ->columns([
                 TextColumn::make('title'),
                 TextColumn::make('slug'),
-                ToggleColumn::make('is_public'),
+                ToggleColumn::make('is_public')
+                    ->label('Public'),
                 ToggleColumn::make('indexable'),
+                ToggleColumn::make('register_outside_filament')
+                    ->label('Register Outside Filament'),
             ])
             ->filters([
                 //

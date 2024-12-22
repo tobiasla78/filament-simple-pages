@@ -4,7 +4,6 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/tobiasla78/filament-simple-pages.svg?style=flat-square)](https://packagist.org/packages/tobiasla78/filament-simple-pages)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/tobiasla78/filament-simple-pages/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/tobiasla78/filament-simple-pages/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/tobiasla78/filament-simple-pages/fix-php-code-styling.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/tobiasla78/filament-simple-pages/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/tobiasla78/filament-simple-pages.svg?style=flat-square)](https://packagist.org/packages/tobiasla78/filament-simple-pages)
 
 Create pages from within your Filament panel. Intended for privacy policy, imprint, etc.
@@ -14,6 +13,7 @@ Create pages from within your Filament panel. Intended for privacy policy, impri
 - Customize the URL of your pages
 - Optional image field
 - View pages from another panel
+- View pages from without panels
 - Toggle search engine indexing for each page
 - Toggle the visibility of the page
 - Support for dark mode
@@ -26,15 +26,17 @@ You can install the package via composer:
 composer require tobiasla78/filament-simple-pages
 ```
 
-Install the plugin with:
+Install the plugin and run the migrations:
 
 ```bash
 php artisan filament-simple-pages:install
 ```
 
-## Usage
+## Basic Usage
 
-Register the plugin in your AdminPanelProvider.
+### Add the resource to create pages in your panel
+
+Register the plugin in your AdminPanelProvider:
 
 ```php
 use Tobiasla78\FilamentSimplePages\FilamentSimplePagesPlugin;
@@ -42,14 +44,19 @@ use Tobiasla78\FilamentSimplePages\FilamentSimplePagesPlugin;
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->plugin(
+            ->path('admin')
+            ->plugins([
                 FilamentSimplePagesPlugin::make()
-                    ->prefixSlug('page') // (optional) sets the page url to yourPanelUrl/page/yourPageSlug
-            )
+                    ->prefixSlug('page')
+            ])
     }
 ```
 
-You can make the pages viewable in another Panel (directly via url):
+For example: `->prefixSlug('page')` will set the page URL to `http://localhost/admin/page/privacy-policy`.
+
+### View pages from another panel
+
+You can make the pages viewable in another Filament panel:
 
 ```php
 use Tobiasla78\FilamentSimplePages\Pages\SimplePage;
@@ -57,33 +64,23 @@ use Tobiasla78\FilamentSimplePages\Pages\SimplePage;
     public function panel(Panel $panel): Panel
     {
         return $panel
+            ->path('user')
             ->pages([
                 SimplePage::class,
             ])
     }
 ```
 
-## Customisation
+The URL would be `http://localhost/user/page/privacy-policy`.
 
-Optionally, you can publish the Filament resource:
-
-```bash
-php artisan vendor:publish --tag="filament-simple-pages-resources"
-```
-
-> Files will be published to App/Filament/Resources you may need to move them and adjust Namespaces if you are using multiple panels.
-
-Optionally, you can publish the views using:
-
-```bash
-php artisan vendor:publish --tag="filament-simple-pages-views"
-```
+## Advanced Usage
+- [Customisation](docs/customisation.md) - Customize resource or publish views
+- [Register Pages Outside Filament](docs/pages-outside-filament.md) - Make pages viewable outside of Filament
+- [Upgrade Guide](docs/upgrading.md) - Upgrade version from 0.x.x to 1.x.x
 
 ## Support
 
-Feel free to open a [discussion](https://github.com/tobiasla78/filament-simple-pages/discussions).
-This plugin also has its own channel on the official Filament PHP Discord server.
-Feedback is also welcome.
+[discussion](https://github.com/tobiasla78/filament-simple-pages/discussions) or [Filament PHP Discord](https://discord.com/channels/883083792112300104/1252364577228853389)
 
 ## License
 

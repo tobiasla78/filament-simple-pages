@@ -9,7 +9,8 @@ use Tobiasla78\FilamentSimplePages\Resources\SimplePageResource;
 
 class FilamentSimplePagesPlugin implements Plugin
 {
-    protected string $prefixSlug;
+    protected string $prefixSlug = 'page';
+    protected bool $shouldRegisterResource = true;
 
     public function getId(): string
     {
@@ -18,11 +19,25 @@ class FilamentSimplePagesPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        $panel
-            ->resources([SimplePageResource::class])
-            ->pages([SimplePage::class]);
+        if ($this->shouldRegisterResource) {
+            $panel->resources([SimplePageResource::class]);
+        }
+
+        $panel->pages([SimplePage::class]);
     }
     
+    public function getShouldRegisterResource() : bool
+    {
+        return $this->shouldRegisterResource ?? true;
+    }
+
+    public function shouldRegisterResource(bool $condition) : FilamentSimplePagesPlugin
+    {
+        $this->shouldRegisterResource = $condition;
+
+        return $this;
+    }
+
     public function getPrefixSlug() : string
     {
         return $this->prefixSlug ?? 'page';
