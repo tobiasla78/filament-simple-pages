@@ -9,8 +9,8 @@ use Tobiasla78\FilamentSimplePages\Resources\SimplePageResource;
 
 class FilamentSimplePagesPlugin implements Plugin
 {
-    protected string $prefixSlug;
-    protected bool $shouldRegisterResource;
+    protected string $prefixSlug = 'page';
+    protected bool $shouldRegisterResource = true;
 
     public function getId(): string
     {
@@ -31,7 +31,7 @@ class FilamentSimplePagesPlugin implements Plugin
         return $this->shouldRegisterResource ?? true;
     }
 
-    public function shouldRegisterResource(bool $condition = true) : FilamentSimplePagesPlugin
+    public function shouldRegisterResource(bool $condition) : FilamentSimplePagesPlugin
     {
         $this->shouldRegisterResource = $condition;
 
