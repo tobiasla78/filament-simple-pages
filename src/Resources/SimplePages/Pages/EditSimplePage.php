@@ -1,9 +1,9 @@
 <?php
 
-namespace Tobiasla78\FilamentSimplePages\Resources\SimplePageResource\Pages;
+namespace Tobiasla78\FilamentSimplePages\Resources\SimplePages\Pages;
 
 use Tobiasla78\FilamentSimplePages\Resources\SimplePageResource;
-use Filament\Actions;
+use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 
 class EditSimplePage extends EditRecord
@@ -13,7 +13,7 @@ class EditSimplePage extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            DeleteAction::make(),
         ];
     }
 }

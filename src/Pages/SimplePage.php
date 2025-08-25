@@ -14,7 +14,7 @@ class SimplePage extends Page
 {
     use SimplePageTrait;
 
-    protected static string $view = 'filament-simple-pages::filament.pages.simple-page';
+    protected string $view = 'filament-simple-pages::filament.pages.simple-page';
 
     protected static bool $shouldRegisterNavigation = false;
 
@@ -25,7 +25,7 @@ class SimplePage extends Page
         return $this->record->title ?? 'Simple Page';
     }
 
-    public static function getSlug() : string
+    public static function getSlug($panel = null) : string
     {
         return FilamentSimplePagesPlugin::get()->getPrefixSlug() . '/{slug}';
     }

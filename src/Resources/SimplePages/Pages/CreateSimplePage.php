@@ -1,9 +1,8 @@
 <?php
 
-namespace Tobiasla78\FilamentSimplePages\Resources\SimplePageResource\Pages;
+namespace Tobiasla78\FilamentSimplePages\Resources\SimplePages\Pages;
 
 use Tobiasla78\FilamentSimplePages\Resources\SimplePageResource;
-use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateSimplePage extends CreateRecord

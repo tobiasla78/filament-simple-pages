@@ -1,9 +1,9 @@
 <?php
 
-namespace Tobiasla78\FilamentSimplePages\Resources\SimplePageResource\Pages;
+namespace Tobiasla78\FilamentSimplePages\Resources\SimplePages\Pages;
 
 use Tobiasla78\FilamentSimplePages\Resources\SimplePageResource;
-use Filament\Actions;
+use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
 class ListSimplePages extends ListRecords
@@ -13,7 +13,7 @@ class ListSimplePages extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            CreateAction::make(),
         ];
     }
 }
